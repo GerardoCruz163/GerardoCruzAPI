@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form target="resultado" method="GET" action="http://localhost:80/alumnos">
+        <button type="button" id="btn">PeticionFetch</button>
+        <button type="submit" id="btn">PeticionSubmit</button>
+    </form><br>
+
+    <div name="resultado"></div>
+
+    <script>
+        document.getElementById("btn").addEventListener("click", ()=>{
+            fetch("http://localhost:80/alumnos")
+            .then(respuesta=>respuesta.json())
+            .then(dato=>console.lod(dato))
+        })
+    </script>
+</body>
+</html>
