@@ -4,16 +4,34 @@ const fs=require('fs');
 const path=require('path');
 const mysql=require('mysql2/promise');
 const app=express();
+// const expressBasicAuth = require('express-basic-auth')
+const bodyParser = require('body-parser');
+const cors=require('cors');
+
 
 var accessLogStream=fs.createWriteStream(path.join(__dirname,'access.log'),{flags: 'a'})
 app.use(morgan('combined',{stream:accessLogStream}));
 app.use(express.json());
+app.use(cors());
+
+// app.use(expressBasicAuth({
+//     users:{"admin":"12345"}
+// }))
+
+app.use(bodyParser.urlencoded({extended:false}));
+
+app.post('/artistas',(req, res)=>{
+    const{nombre, apellido}=req.body;
+    res.json(req.body);
+});
 
 app.get("/artistas",async(req,res)=>{
     try{
-        const conn= await mysql.createConnection({host: 'localhost',user:'root',password:'Jerry200120172020',database:'aplicacion_musica'})
-        const [rows,fields] = await conn.query('SELECT * from artistas');
-        res.json(rows);
+        // const conn= await mysql.createConnection({host: 'localhost',user:'root',password:'Jerry200120172020',database:'aplicacion_musica'})
+        // const [rows,fields] = await conn.query('SELECT * from artistas');
+        // res.json(rows);
+        console.log("Login exitoso")
+        res.send("Login exitoso")
     }catch(err){
         res.status(500).json({mensaje:error.sqlMessage});
     }
