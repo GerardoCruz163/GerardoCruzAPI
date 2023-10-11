@@ -17,14 +17,3 @@
 // });
 
 
-const express = require('express');
-const { check, validationResult } = require('express-validator');
-const app = express();
-
-app.use(express.json());
-
-app.post("/artistas", checkSchema({
-    'id_Artista': {isl}
-}))
-
-
