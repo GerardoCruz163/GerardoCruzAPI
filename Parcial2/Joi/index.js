@@ -4,7 +4,7 @@ const express =require('express');
 const app=express();
 
 //capturar datos
-app.use(express.join());
+app.use(express.json());
 
 //middleware
 app.use(express.urlencoded({extended: false}));
