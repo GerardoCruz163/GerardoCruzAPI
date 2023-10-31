@@ -1,0 +1,11 @@
+persona:
+  nombre: GERARDO CRUZ
+  edad: 22
+  dirección:
+    calle: Calle Principal 123
+    ciudad: Ciudad Ejemplo
+    estado: Estado de Ejemplo
+  hobbies:
+    - Leer
+    - Producir Musica
+    - Viajar
