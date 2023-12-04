@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Type</title>
+</head>
+<body>
+    <form id="formulario">
+        <h1>FORMULARIO</h1>
+        <hr>
+        <label for="Nombre">Nombre:</label>
+        <input id="Nombre" name="nombre" type="text"><br><br>
+        <label for="Apellido">apelllido:</label>
+        <input id="Apellido" name="apellido" type="text"><br><br>
+        <label for="Fecha_Nacimiento">Fecha de Nacimiento:</label>
+        <input id="Fecha_Nacimiento" name="fecha_nacimiento" type="text"><br><br>
+        <label for="Acerca_de">Acerca de:</label>
+        <input id="Acerca_de" name="acerca_de" type ="text"><br><br>
+        <label for="Pais">Pais:</label>
+        <input id="Pais" name="pais" type="text"><br> <br>
+        <button type="submit">Enviar</button>
+    </form>
+        <script>
+            document.getElementById('formulario').addEventListener('submit', function(e) {
+                e.preventDefault();
+   
+                const formData = new FormData(this);
+   
+                fetch('http://localhost:8081/artistas', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    //la respuesta del servidor
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        </script>
+</body>
+</html>
